@@ -28,7 +28,7 @@ class CustomAdapter2 extends ArrayAdapter {
     }
 
 
-    public CustomAdapter2(Context context, List<Whereyatt> listitems) {
+    public CustomAdapter2(Context context, List<Emergencyapp> listitems) {
         super(context,R.layout.contact_row ,listitems);
 
     }
@@ -75,15 +75,15 @@ class CustomAdapter2 extends ArrayAdapter {
             }
         });
 
-        final Whereyatt gettingidtodeleterow = new Whereyatt();
+        final Emergencyapp gettingidtodeleterow = new Emergencyapp();
         deleteImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int id;
 
                 MyDBHandler db = new MyDBHandler(getContext() ,null, null, 1);
-                Whereyatt whereyatt = new Whereyatt();
-                String nametodelete =  whereyatt.get_contactname();
+                Emergencyapp emergencyapp = new Emergencyapp();
+                String nametodelete =  emergencyapp.get_contactname();
 
                 db.deleteContact(nametodelete);
 
@@ -102,11 +102,11 @@ class CustomAdapter2 extends ArrayAdapter {
         }
 
 
-        Whereyatt whereyatt = new Whereyatt();
-        whereyatt  = (Whereyatt) getItem(position);
+        Emergencyapp emergencyapp = new Emergencyapp();
+        emergencyapp  = (Emergencyapp) getItem(position);
 
 
-        if (whereyatt != null) {
+        if (emergencyapp != null) {
             //   TextView tt1 = (TextView) v.findViewById(R.id.contact_id);
             TextView tt2 = (TextView) v.findViewById(R.id.contact_name);
             TextView tt3 = (TextView) v.findViewById(R.id.contact_num);
@@ -118,11 +118,11 @@ class CustomAdapter2 extends ArrayAdapter {
 
 
             if (tt2 != null) {
-                tt2.setText(whereyatt.get_contactname());
+                tt2.setText(emergencyapp.get_contactname());
             }
 
             if (tt3 != null) {
-                tt3.setText(whereyatt.get_category());
+                tt3.setText(emergencyapp.get_category());
             }
         }
 

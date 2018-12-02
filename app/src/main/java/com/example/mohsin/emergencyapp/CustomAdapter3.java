@@ -28,7 +28,7 @@ class CustomAdapter3 extends ArrayAdapter {
     }
 
 
-    public CustomAdapter3(Context context, List<Whereyatt> listitems) {
+    public CustomAdapter3(Context context, List<Emergencyapp> listitems) {
         super(context, R.layout.contact_row, listitems);
 
     }

@@ -35,7 +35,7 @@ public class CallSend extends AppCompatActivity {
         // getting attached intent data
         product = i.getStringExtra("product");
 
-        List<Whereyatt> contactspolice = db1.getPoliceContacts(product);
+        List<Emergencyapp> contactspolice = db1.getPoliceContacts(product);
 
         ListAdapter mohsinsAdapter3 = new CustomAdapter3(this, contactspolice);
         messageListView.setAdapter(mohsinsAdapter3);

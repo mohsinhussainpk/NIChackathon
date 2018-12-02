@@ -21,6 +21,7 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -466,6 +467,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        int action = event.getAction();
+        int keyCode = event.getKeyCode();
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_VOLUME_UP:
+                if (action == KeyEvent.ACTION_DOWN) {
+
+                    String text = "03015911713";
+
+                    Intent smsIntent = new Intent(Intent.ACTION_VIEW);
+                    smsIntent.setType("vnd.android-dir/mms-sms");
+                    smsIntent.putExtra("address", text);
+                    // smsIntent.putExtra("sms_body", "i am in a police encounter at" + cityName);
+                    smsIntent.putExtra("sms_body", "i am in danger at Nic");
+                    startActivity(smsIntent);
+                }
+                return true;
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                if (action == KeyEvent.ACTION_DOWN) {
+                    //TODO
+                }
+                return true;
+            default:
+                return super.dispatchKeyEvent(event);
+        }
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode,

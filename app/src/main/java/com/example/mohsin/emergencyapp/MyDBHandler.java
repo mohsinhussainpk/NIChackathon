@@ -56,13 +56,13 @@ public class MyDBHandler extends SQLiteOpenHelper {
     //Add a new row to the database
 
     // code to add the new contact
-    void addContact(Whereyatt whereyatt) {
+    void addContact(Emergencyapp emergencyapp) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_CONTACTS_NAME, whereyatt.get_contactname()); // Contact Name
-        values.put(COLUMN_CONTACTS_NUMBER, whereyatt.get_contactnumber()); // Contact Phone
-        values.put(COLUMN_CATEGORY, whereyatt.get_category()); // Contact Category
+        values.put(COLUMN_CONTACTS_NAME, emergencyapp.get_contactname()); // Contact Name
+        values.put(COLUMN_CONTACTS_NUMBER, emergencyapp.get_contactnumber()); // Contact Phone
+        values.put(COLUMN_CATEGORY, emergencyapp.get_category()); // Contact Category
 
 
         // Inserting Row
@@ -83,8 +83,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
         database.close();
     }
 
-    public List<Whereyatt> getAllContacts() {
-        List<Whereyatt> contactList = new ArrayList<Whereyatt>();
+    public List<Emergencyapp> getAllContacts() {
+        List<Emergencyapp> contactList = new ArrayList<Emergencyapp>();
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_NAME;
 
@@ -94,16 +94,16 @@ public class MyDBHandler extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                Whereyatt whereyatt = new Whereyatt();
-                whereyatt.set_id(Integer.parseInt(cursor.getString(0)));
-                whereyatt.set_contactname(cursor.getString(1));
-                whereyatt.set_contactnumber(cursor.getString(2));
-                whereyatt.set_category(cursor.getString(3));
+                Emergencyapp emergencyapp = new Emergencyapp();
+                emergencyapp.set_id(Integer.parseInt(cursor.getString(0)));
+                emergencyapp.set_contactname(cursor.getString(1));
+                emergencyapp.set_contactnumber(cursor.getString(2));
+                emergencyapp.set_category(cursor.getString(3));
                 //contact.setID(Integer.parseInt(cursor.getString(0)));
                 //   contact.setName(cursor.getString(1));
                 //   contact.setPhoneNumber(cursor.getString(2));
                 // Adding contact to list
-                contactList.add(whereyatt);
+                contactList.add(emergencyapp);
             } while (cursor.moveToNext());
         }
 
@@ -114,8 +114,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
 
 
-    public List<Whereyatt> getPoliceContacts(String product) {
-        List<Whereyatt> contactList1 = new ArrayList<Whereyatt>();
+    public List<Emergencyapp> getPoliceContacts(String product) {
+        List<Emergencyapp> contactList1 = new ArrayList<Emergencyapp>();
         // Select All Query
         String selectQuery1 = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_CATEGORY + "= '" + product + "'";
 
@@ -125,17 +125,17 @@ public class MyDBHandler extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor1.moveToFirst()) {
             do {
-                Whereyatt whereyatt = new Whereyatt();
-                whereyatt.set_id(Integer.parseInt(cursor1.getString(0)));
-                whereyatt.set_contactname(cursor1.getString(1));
-                whereyatt.set_contactnumber(cursor1.getString(2));
-                whereyatt.set_category(cursor1.getString(3));
+                Emergencyapp emergencyapp = new Emergencyapp();
+                emergencyapp.set_id(Integer.parseInt(cursor1.getString(0)));
+                emergencyapp.set_contactname(cursor1.getString(1));
+                emergencyapp.set_contactnumber(cursor1.getString(2));
+                emergencyapp.set_category(cursor1.getString(3));
 
                 //contact.setID(Integer.parseInt(cursor.getString(0)));
                 //   contact.setName(cursor.getString(1));
                 //   contact.setPhoneNumber(cursor.getString(2));
                 // Adding contact to list
-                contactList1.add(whereyatt);
+                contactList1.add(emergencyapp);
             } while (cursor1.moveToNext());
         }
 
@@ -145,10 +145,10 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
 
     // Deleting single contact
-    public void deleteContact(Whereyatt whereyatt) {
+    public void deleteContact(Emergencyapp emergencyapp) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, COLUMN_CONTACTS_NAME + " = ?",
-                new String[] { String.valueOf(whereyatt.get_id())});
+                new String[] { String.valueOf(emergencyapp.get_id())});
         db.close();
     }
 
